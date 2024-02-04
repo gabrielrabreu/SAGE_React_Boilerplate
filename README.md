@@ -1,1 +1,1 @@
-# SAGE_React_Boilerplate
+# SAGE React Boilerplate
