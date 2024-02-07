@@ -1,0 +1,76 @@
+/* Grid Item */
+
+.grid-item {
+  padding: 0.5rem;
+  overflow: hidden;
+  border: solid 1px blue;
+
+  // Extra Small devices (phones)
+  @media (max-width: 575.98px) {
+    @for $i from 1 through 12 {
+      &.cols-xs-#{$i} {
+        grid-column: span #{$i};
+      }
+
+      &.rows-xs-#{$i} {
+        grid-row: span #{$i};
+      }
+    }
+  }
+
+  // Small devices (tablets)
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    // Define column layouts for sm as needed
+    @for $i from 1 through 12 {
+      &.cols-sm-#{$i} {
+        grid-column: span #{$i};
+      }
+
+      &.rows-sm-#{$i} {
+        grid-row: span #{$i};
+      }
+    }
+  }
+
+  // Medium devices (desktops)
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    // Define column layouts for md as needed
+    @for $i from 1 through 12 {
+      &.cols-md-#{$i} {
+        grid-column: span #{$i};
+      }
+
+      &.rows-md-#{$i} {
+        grid-row: span #{$i};
+      }
+    }
+  }
+
+  // Large devices (desktops)
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    // Define column layouts for lg as needed
+    @for $i from 1 through 12 {
+      &.cols-lg-#{$i} {
+        grid-column: span #{$i};
+      }
+
+      &.rows-lg-#{$i} {
+        grid-row: span #{$i};
+      }
+    }
+  }
+
+  // Extra Large devices (large desktops)
+  @media (min-width: 1200px) {
+    // Define column layouts for xl as needed
+    @for $i from 1 through 12 {
+      &.cols-xl-#{$i} {
+        grid-column: span #{$i};
+      }
+
+      &.rows-xl-#{$i} {
+        grid-row: span #{$i};
+      }
+    }
+  }
+}
