@@ -1,17 +1,16 @@
 import React from "react";
-
-import { PageTitle } from "../../components";
+import { HeroSection } from "@gabrielrabreu/sage-react";
 
 const DashboardPage: React.FC = () => {
   return (
     <>
-      <PageTitle
+      <HeroSection
         title="Dashboard"
         breadcrumb={[
           { name: "Home", link: "/" },
-          { name: "Dashboard", link: "/" },
+          { name: "Dashboard", link: "/dashboard" },
         ]}
-      ></PageTitle>
+      ></HeroSection>
     </>
   );
 };

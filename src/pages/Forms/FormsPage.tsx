@@ -1,17 +1,16 @@
 import React from "react";
-
-import { PageTitle } from "../../components";
+import { HeroSection } from "@gabrielrabreu/sage-react";
 
 const FormsPage: React.FC = () => {
   return (
     <>
-      <PageTitle
+      <HeroSection
         title="Forms"
         breadcrumb={[
           { name: "Home", link: "/" },
           { name: "Forms", link: "/forms" },
         ]}
-      ></PageTitle>
+      ></HeroSection>
     </>
   );
 };
