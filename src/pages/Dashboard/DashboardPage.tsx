@@ -1,5 +1,7 @@
 import React from "react";
-import { HeroSection } from "@gabrielrabreu/sage-react";
+import { Card, HeroSection } from "@gabrielrabreu/sage-react";
+
+import Section from "../../layout/Section/Section";
 
 const DashboardPage: React.FC = () => {
   return (
@@ -11,6 +13,11 @@ const DashboardPage: React.FC = () => {
           { name: "Dashboard", link: "/dashboard" },
         ]}
       ></HeroSection>
+      <Section>
+        <Card>
+          <Card.Title>Sales</Card.Title>
+        </Card>
+      </Section>
     </>
   );
 };
