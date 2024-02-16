@@ -1,21 +1,16 @@
 import React from "react";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 import {
   Button,
   Card,
-  DatePicker,
-  ErrorMessage,
+  FormField,
   Grid,
   HeroSection,
-  InputNumber,
-  InputText,
-  Label,
+  Input,
 } from "@gabrielrabreu/sage-react";
 
 import Section from "../../layout/Section/Section";
-
-import styles from "./FormsPage.module.scss";
 
 interface FormData {
   firstName: string;
@@ -28,7 +23,14 @@ const FormsPage: React.FC = () => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({
+    mode: "onBlur",
+    defaultValues: {
+      firstName: "",
+      age: 0,
+      birthday: new Date(),
+    },
+  });
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     console.log(data);
@@ -49,51 +51,51 @@ const FormsPage: React.FC = () => {
             <Card>
               <Card.Title>Forms Elements</Card.Title>
               <form onSubmit={handleSubmit(onSubmit)}>
-                <div className={styles.formField}>
-                  <Label htmlFor="firstName" text="First Name" />
-                  <Controller
-                    control={control}
-                    name="firstName"
-                    render={({ field }) => (
-                      <InputText
-                        value={field.value}
-                        onChange={field.onChange}
-                      />
-                    )}
-                    rules={{ required: "First Name is required" }}
-                  />
-                  <ErrorMessage message={errors.firstName?.message} />
-                </div>
-                <div className={styles.formField}>
-                  <Label htmlFor="age" text="Age" />
-                  <Controller
-                    control={control}
-                    name="age"
-                    render={({ field }) => (
-                      <InputNumber
-                        value={field.value}
-                        onChange={field.onChange}
-                      />
-                    )}
-                    rules={{ required: "Age is required" }}
-                  />
-                  <ErrorMessage message={errors.age?.message} />
-                </div>
-                <div className={styles.formField}>
-                  <Label htmlFor="birthday" text="Birthday" />
-                  <Controller
-                    control={control}
-                    name="birthday"
-                    render={({ field }) => (
-                      <DatePicker
-                        value={field.value}
-                        onChange={field.onChange}
-                      />
-                    )}
-                    rules={{ required: "Birthday is required" }}
-                  />
-                  <ErrorMessage message={errors.birthday?.message} />
-                </div>
+                <FormField
+                  name="firstName"
+                  label="First Name"
+                  control={control}
+                  rules={{ required: "First Name is required" }}
+                  error={errors.firstName}
+                  render={({ value, onChange, onBlur }) => (
+                    <Input
+                      type="text"
+                      value={value}
+                      onChange={onChange}
+                      onBlur={onBlur}
+                    />
+                  )}
+                />
+                <FormField
+                  name="age"
+                  label="Age"
+                  control={control}
+                  rules={{ required: "Age is required" }}
+                  error={errors.age}
+                  render={({ value, onChange, onBlur }) => (
+                    <Input
+                      type="number"
+                      value={value}
+                      onChange={onChange}
+                      onBlur={onBlur}
+                    />
+                  )}
+                />
+                <FormField
+                  name="birthday"
+                  label="Birthday"
+                  control={control}
+                  rules={{ required: "Birthday is required" }}
+                  error={errors.birthday}
+                  render={({ value, onChange, onBlur }) => (
+                    <Input
+                      type="date"
+                      value={value}
+                      onChange={onChange}
+                      onBlur={onBlur}
+                    />
+                  )}
+                />
                 <Button type="submit" text="Submit" />
               </form>
             </Card>
